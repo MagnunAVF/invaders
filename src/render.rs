@@ -1,5 +1,10 @@
+use crossterm::{
+    cursor::MoveTo,
+    style::{Color, SetBackgroundColor},
+    terminal::{Clear, ClearType},
+    QueueableCommand,
+};
 use std::io::{Stdout, Write};
-use crossterm::{QueueableCommand, style::{SetBackgroundColor, Color}, terminal::{Clear, ClearType}, cursor::MoveTo};
 
 use crate::frame::Frame;
 

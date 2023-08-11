@@ -1,5 +1,5 @@
-use std::time::Duration;
 use rusty_time::Timer;
+use std::time::Duration;
 
 use crate::frame::{Drawable, Frame};
 

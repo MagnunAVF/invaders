@@ -1,8 +1,11 @@
-use std::{time::Duration, cmp::max};
+use std::{cmp::max, time::Duration};
 
 use rusty_time::Timer;
 
-use crate::{NUM_COLS, NUM_ROWS, frame::{Drawable, Frame}};
+use crate::{
+    frame::{Drawable, Frame},
+    NUM_COLS, NUM_ROWS,
+};
 
 pub struct Invader {
     pub x: usize,
@@ -25,7 +28,8 @@ impl Invaders {
                     && (y > 0)
                     && (y < 9)
                     && (x % 2 == 0)
-                    && (y % 2 == 0) {
+                    && (y % 2 == 0)
+                {
                     army.push(Invader { x, y });
                 }
             }
@@ -79,7 +83,8 @@ impl Invaders {
         if let Some(idx) = self
             .army
             .iter()
-            .position(|invader| (invader.x == x) && (invader.y == y)) {
+            .position(|invader| (invader.x == x) && (invader.y == y))
+        {
             self.army.remove(idx);
             true
         } else {
@@ -92,7 +97,9 @@ impl Drawable for Invaders {
     fn draw(&self, frame: &mut Frame) {
         for invader in self.army.iter() {
             frame[invader.x][invader.y] = if (self.move_timer.time_left.as_secs_f32()
-                / self.move_timer.duration.as_secs_f32()) > 0.5 {
+                / self.move_timer.duration.as_secs_f32())
+                > 0.5
+            {
                 "x"
             } else {
                 "+"
